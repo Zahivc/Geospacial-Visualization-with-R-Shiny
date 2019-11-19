@@ -35,7 +35,7 @@ splitfun <- function(x) {
 }
 
 ec_data$Sale_Year <- lapply(X = ec_data$`Sale Date`, FUN = splitfun)
-
+ec_data$Sale_Year <- as.character(ec_data$Sale_Year)
 
 ec_data <- as.data.frame(ec_data)
 ec_data$Floor_Level <- factor(ec_data$Floor_Level, labels = c("Ground Floor", "Bottom Half", "Top Half", "Penthouse"))
