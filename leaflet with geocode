@@ -1,0 +1,42 @@
+library(leaflet)
+library(leaflet.extras)
+library(ggmap)
+
+##########################get longitude and latitude
+register_google()
+for(i in 1:67){
+  ec_geo[i, 1] <- paste(pjname[i], "Singapore", sep = " ")
+}
+
+for(i in 1:67){
+  ec_geo[i, 2:3]<- geocode(ec_geo$pjname[i])
+}
+
+ec_area2 <- unique(ec_area[, 1:3])
+ec_geo2 <- left_join(ec_geo, ec_area2, by = c("pjname" = "Project Name"))
+
+
+#########################plot the map and colored the properties by regions
+# ec_geo2 <- read_csv("ec_geo2.csv")
+
+pal <- colorFactor(palette = c("red", "green", "blue", "orange", "purple"),
+                   levels = c("East Region", "North East Region", 
+                              "West Region", "North Region", "Central Region"))
+my_map <- ec_geo2 %>% leaflet() %>% addTiles () %>%
+  addCircleMarkers(label = ~ pjname, color = ~ pal(`Planning Region`), radius = 4) %>%
+  addSearchOSM()
+m %>% addCircleMarkers(label = ~ pjname, color = ~ pal(`Planning Region`), radius = 4) %>% addSearchOSM()
+
+
+#clusterOptions = markerClusterOptions())
+#clustering
+#command shift c multiple comments
+
+# greenLeafIcon <- makeIcon(
+#        iconUrl = "http://leafletjs.com/examples/custom-icons/leaf-green.png",
+#        iconWidth = 38, iconHeight = 95,
+#        iconAnchorX = 22, iconAnchorY = 94,
+#        shadowUrl = "http://leafletjs.com/examples/custom-icons/leaf-shadow.png",
+#        shadowWidth = 50, shadowHeight = 64,
+#        shadowAnchorX = 4, shadowAnchorY = 62)
+# for creating leaf icon
