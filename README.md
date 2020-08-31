@@ -1,5 +1,5 @@
 # Geospacial-Visualization-with-R-Shiny
-Authors: Jeff Cheah Vyi, Dylan Bristow MITCHELL, Neel CHOMAL, TEO Lip Peng, HO Pui Shan, Muhammad Jufri Bin RAMLI
+Authors: Jeff CHEAH Vyi, Dylan Bristow MITCHELL, Neel CHOMAL, TEO Lip Peng, HO Pui Shan, Muhammad Jufri Bin RAMLI
 
 ## Introduction
 
